@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags])
 
     respond_to do |format|
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     create_or_delete_posts_tags(@post, params[:post][:tags])
 
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params.except(:tags))
         format.html { redirect_to post_url(@post) }
       else
         format.html { render :edit }
@@ -45,10 +45,11 @@ class PostsController < ApplicationController
   end
 
   private
+  
   def create_or_delete_posts_tags(post, tags)
     post.taggables.destroy_all
     tags = tags.strip.split(",")
-    tags.split(',').each do |tag|
+    tags.each do |tag|
       post.tags << Tag.find_or_create_by(name: tag)
     end
   end

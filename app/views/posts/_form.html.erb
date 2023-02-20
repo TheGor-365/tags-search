@@ -20,7 +20,7 @@
 
   <div>
     <%= form.label :tag, style: "display: block" %>
-    <%= form.text_area :tag, value: post.tags.map(&:name).join(",") %>
+    <%= form.text_area :tags, value: post.tags.map(&:name).join(",") %>
   </div>
 
   <div>
