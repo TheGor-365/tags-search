@@ -9,4 +9,13 @@
     <%= post.body %>
   </p>
 
+  <p>
+    <strong>Tags:</strong>
+    <% post.tags.each do |tag| %>
+      <%= link_to tag do %>
+        <span class="tag"><%= tag.name.capitalize %></span>
+      <% end %>
+    <% end %>
+  </p>
+
 </div>

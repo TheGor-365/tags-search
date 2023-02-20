@@ -1,2 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+
+.tag {
+  background: #0045c6;
+  color: #FFF;
+  padding: .5em;
+  margin: .5em;
+  border-radius: .25em;
+  display: inline-block;
+}
